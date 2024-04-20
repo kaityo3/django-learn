@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>画像アップロード</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}">
+    </head>
+    <body id="inpur_Form">
+        <h1>生徒の個人情報集めページ</h1>
+        <h2 class="icon">生徒情報のアップロード</h2>
+        <div class="form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ formset.as_p }}<br>
+                <button type="submit">送信</button>
+            </form>
+        </div>
+    </body>
+</html>

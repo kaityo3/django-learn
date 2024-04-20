@@ -1,0 +1,12 @@
+{% comment %} <form method="POST"> {% endcomment %}
+<form method="{% if method %}{{ method }}{% else %}POST{% endif %}" action="{% if action %}{{ action }}{% endif %}">
+    {% csrf_token %}
+    {% if as_table %}
+        {{ form.as_table }}
+    {% elif as_ul %} 
+        {{ form.as_ul }}
+    {% elif as_p %} 
+        {{ form.as_p }}
+    {% endif %}
+    <button type="submit">送信</button>
+    </form>

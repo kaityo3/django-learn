@@ -1,0 +1,15 @@
+{% extends "formapp/base.html" %}
+{% block title %}生徒個人の編集画面{{ block.super }}{% endblock %}
+
+{% block content %}
+        <h1>生徒の個人情報集めページ</h1>
+        <h2 class="icon">生徒情報のアップロード</h2>
+        <div class="form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}<br>
+                <button type="submit">メンバー更新</button>
+                <p><img src={{ student.picture.url }}></p>
+            </form>
+        </div>
+{% endblock %}

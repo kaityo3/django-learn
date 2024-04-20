@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>画像アップロード</title>
+    </head>
+    <body>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}<br>
+            <button type="submit">送信</button>
+        </form>
+
+        {% if user %}
+            <p>name: {{ user.name }}</p>
+            <p>age: {{ user.age }}</p>
+            <img src="{{ user.picture.url }}">
+        {% endif %}
+</html>

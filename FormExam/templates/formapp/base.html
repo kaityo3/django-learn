@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}生徒情報{% endblock %}</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}">
+    </head>
+    <body id="inpur_Form">
+        <header>
+                <h1>生徒情報搾取サイト</h1>
+                <nav>
+                    <ul class=global-nav>
+                    <li><a href="{% url "form_app:index" %}">目次</a></li>
+                    <li><a href="{% url "form_app:form_student" %}">生徒登録</a></li>
+                    <li><a href="{% url "form_app:form_student_update" %}">生徒更新</a></li>
+                    <li><a href="{% url "form_app:students_list" %}">生徒一覧</a></li>
+                    </ul>
+                </nav>
+        </header>
+
+        <div id="wrap">
+        {% block content %}{% endblock  %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "formapp/base.html" %}
+{% block title %}目次{{ block.super }}{% endblock %}
+
+{% block content %}
+<h2 class="icon">目次</h2>
+<a href="{% url "form_app:form_student" %}">生徒登録画面</a><br>
+<a href="{% url "form_app:form_student_update" %}">生徒更新画面</a><br>
+<a href="{% url "form_app:form_student_update" %}">生徒更新画面_手本</a><br>
+{% endblock  %}
+

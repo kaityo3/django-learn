@@ -1,0 +1,19 @@
+
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Form</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css"%}">
+    </head>
+    <body id="inpur_Form">
+        <h1>個人情報集めページ</h1>
+        <section>
+        <h2 class="icon">Contact form</h2>
+        <div class="form">
+            {% comment %} {% include "formapp/form_template2.html" with as_ul=True method="GET" action="/aaa" %} {% endcomment %}
+            {% include "formapp/form_template2.html" with as_ul=True %} 
+        </div>
+        </section>
+    </body>
+</html>

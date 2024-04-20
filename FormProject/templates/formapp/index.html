@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home_murakami</title>
+    </head>
+    <body>
+        <h1>ホームページ</h1>
+        <a href="{% url "form_app:form_page" %}">フォーム画面</a><br>
+        <a href="{% url "form_app:form_post" %}">フォームPOST画面</a><br>
+        <a href="{% url "form_app:form_set_post" %}">フォームset-POST画面</a><br>
+        <a href="{% url "form_app:modelform_set_post" %}">モデルフォームset-POST画面</a><br>
+        <a href="{% url "form_app:upload_sample" %}">アップロードサンプル画面</a><br>
+        <a href="{% url "form_app:upload_model_form" %}">アップロードmodelform画面</a><br>
+    </body>
+    </html>

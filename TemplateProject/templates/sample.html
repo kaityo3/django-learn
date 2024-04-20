@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "download/home.css"%}">
+
+{# フィルター機能について #}
+{# 大文字 #}
+<h1>{{ name | upper }}</h1>
+{# url化 #}
+<h1>{{ page_url | urlize }}</h1>
+{# 型変更 #} 
+<p>BMI:{{ bmi | floatformat:2 }}</p>
+{# デフォルト値設定 #}
+<p>給料:{{ salary | default:"公開してません" }}</p>
+{# リスト内ランダム表示 #}
+<p>フルーツランダム {{ fluits | random | lower }}</p>
+{# リスト内連結表示 #}
+<p>フルーツリスト {{ fluits | join:"&" }}</p>
+{# 改行含むメッセージ #}
+<p>{{ msg | linebreaks }}</p>
+{# 長いメッセージの省略 #}
+<p>{{ msg2 | truncatechars:7 }}</p>
+
+{# フィルターの全体適用 #}
+{% filter upper %}
+<p>aaa</p>
+<h1>bbb</h1>
+{% endfilter %}
+
+<a href="{% url "template_app:home" first_name="minami" last_name="ando" %}">home</a>
+
+<img src="{% static "download/sample.jpg" %}">

@@ -1,0 +1,26 @@
+{% load event_tags %}
+<h1>my name: {{ my_name }}</h1>
+<h2>favorite_fruites: {{ favorite_fruits }}</h2>
+<h2>age: {{ my_info.age }}</h2>
+
+{# for #}
+<ul>
+{% for fruit in favorite_fruits %}
+    <li>{{ fruit }}</li>
+{% endfor %}
+</ul>
+
+{# if-endif #}
+{% if "apple" in favorite_fruits %}
+    <p>リンゴあります</p>
+{% elif "grape" in favorite_fruits %}
+    <p>ブドウあります</p>
+{% else %}
+    <p>Not Found</p>
+{% endif %}
+
+{% if my_info.age > 20 %}
+    <p>成年済</p>
+{% endif %}
+
+<p>{{ status | status_to_string:"Satoshi" }}</p>

@@ -1,0 +1,20 @@
+{% extends "formapp/base.html" %}
+{% block title %}生徒個人の編集画面{{ block.super }}{% endblock %}
+
+{% block content %}
+<h2 class="icon">生徒情報のアプデ</h2>
+<div class="form">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}<br>
+        <button type="submit">メンバー更新</button>
+        {% if student.picture %}
+        <p>現在のファイルurl:{{ student.picture.url }}</p>
+        <p><img src={{ student.picture.url }} style="width:100%" ></p>
+        {% else %}
+        <p>画像が登録されてません</p>
+        {% endif %}
+        <a href="{% url "form_app:delete_student" id=student.id %}">生徒情報を削除する</a><br>
+    </form>
+</div>
+{% endblock %}
