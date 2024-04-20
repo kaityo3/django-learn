@@ -28,7 +28,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 SECRET_KEY = "django-insecure-1z7rcvp$8e_m2r2%k@uma_g1hzlt!$qg0b(!874ib(xyjzw@vx"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1",]
 
@@ -87,6 +87,15 @@ DATABASES = {
     }
 }
 
+# Password hashers
+# https://docs.djangoproject.com/ja/4.1/topics/auth/passwords/#included-hashers
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -97,6 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "OPTIONS": {
+            "min_length":8   #パスワードに8文字以上必要
+        }
     },
     {
         "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",

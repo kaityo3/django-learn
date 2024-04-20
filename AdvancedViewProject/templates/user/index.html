@@ -1,0 +1,18 @@
+{% extends "user/base.html" %}
+{% block title %}目次{{ block.super }}{% endblock %}
+
+{% block content %}
+<h2 class="icon">目次</h2>
+<ul class=index>
+    <li><a href="{% url "user:index" %}">目次</a></li>
+    <li><a href="{% url "admin:index" %}">管理画面</a></li>
+    {% if user.is_authenticated %}
+        <li><a href="{% url "user:user_logout" %}">ログアウト</a></li>
+    {% else %}
+    <li><a href="{% url "user:register" %}">ユーザー登録</a></li>
+    <li><a href="{% url "user:user_login" %}">ログイン</a></li>
+    {% endif %}
+    <li><a href="{% url "user:info" %}">自分の情報</a></li>
+</ul>
+{% endblock  %}
+

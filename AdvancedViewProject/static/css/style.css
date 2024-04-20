@@ -1,3 +1,6 @@
+p,h1,h2,h3,h4,h5,h6{
+    margin-top: 0;
+}
 body{
     background-color: #cccccc;
     color: #333333;
@@ -16,16 +19,17 @@ a:hover{
 header {
     width: 660px;
     height: 100px;
-    margin: 0 0;
-
+    margin: 0 auto;
 }
 header h1{
+    margin-bottom: 0;
+}
+header h2{
     float: left;
 }
-
 .global-nav {
     float: left;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 .global-nav li{
     float:left;
