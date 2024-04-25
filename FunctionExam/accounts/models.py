@@ -67,7 +67,7 @@ class UserActivateTokens(models.Model):
 # Userのデータが作成されるたびに(post_save条件)、デコレータがついた関数(publish_token)が実行される。
 @receiver(post_save, sender=Users)
 def publish_token(sender, instance, **kwargs):
-    print(str(uuid4))
+    # print(str(uuid4))
     # UserActivateTokensが実行される
     user_activate_token = UserActivateTokens.objects.create(
         user=instance, 

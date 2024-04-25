@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>掲示板一覧</h2>
+<p><a class="navbar-brand" href="{% url 'boards:create_theme' %}">掲示板を作成する</a></p>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>タイトル</th>
+            <th>作成者</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for theme in themes %}
+        <tr>
+            <th>{{ forloop.counter }}</th>
+            <th>{{ theme.title }}</th>
+            <th>{{ theme.user.username }}</th>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+    
+
+
+</table>
+{% endblock content %}

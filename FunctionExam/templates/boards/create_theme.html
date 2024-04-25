@@ -5,6 +5,10 @@
     <div>{{ message.message }}</div>
   {% endfor %}
 {% endif %}
-accountのホーム画面です。
-<a class="navbar-brand" href="{% url 'boards:list_themes' %}">掲示板一覧はこちら</a>
+<h2>掲示板作成画面</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ create_theme_form.as_p }}
+    <input type="submit" value="掲示板作成">
+</form>
 {% endblock content %}
