@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>掲示板修正画面</h2>
+<p><a class="navbar-brand" href="{% url 'boards:list_themes' %}">保存せず掲示板一覧に戻る</a></p>
+{% if messages %}
+  {% for message in messages %}
+    <div>{{ message.message }}</div>
+  {% endfor %}
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{ theme_edit_form.as_p }}
+    <input type="submit" value="掲示板内容修正">
+</form>
+<p><a class="navbar-brand" href="{% url 'boards:delete_theme' id=id %}">この掲示板を削除する</a></p>
+
+{% endblock content %}
