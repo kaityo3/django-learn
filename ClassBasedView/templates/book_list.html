@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>本一覧</h1>
+<table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>タイトル</th>
+            <th>説明</th>
+            <th>編集</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <th>{{ object.id }}</th>
+            <th><a href="{% url "store:detail_book" pk=object.id %}">{{ object.name }}</a></th>
+            <th>{{ object.description }}</th>
+            <th><a href="{% url "store:edit_book" pk=object.id %}">編集</a></th>
+            <th>
+            {% for picture in object.pictures_set.all %}
+            <img width="50px" height="50px" src="{{ picture.picture.url }}" >
+            {% endfor %}
+            </th>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+{% endblock content %}

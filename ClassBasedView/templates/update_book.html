@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        {{ message.message }}
+    {% endfor %}
+{% endif %}
+<form method ="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <hr>
+    {% for picture in pictures %}
+    <a href="{% url "store:delete_picture" pk=picture.pk %}"><img width="100px" height="100px" src="{{ picture.picture.url }}" ></a>        
+    {% endfor %}
+    {{ picture_form.as_p }}
+    <button type="submit">送信</button>
+</form>
+<a href="{% url "store:delete_book" pk=object.id %}">削除する</a>
+
+<style>
+    img:hover{
+        opacity: 0.2;
+    }
+</style>
+
+{% endblock content %} 
+
+

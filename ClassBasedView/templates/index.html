@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Indexページ</h1>
+<form method ="POST">
+    {% csrf_token %}
+    {{ bookform.as_p }}
+    <button type="submit">送信</button>
+</form>
+{% endblock content %}
