@@ -1,8 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="POST">
+{% comment %} <form method="POST">
     {% csrf_token %}
     {{ regist_form.as_p }}
     <input type="submit" value="ユーザー登録">
-</form>
+</form> {% endcomment %}
+
+<div class="container">
+    <h1 class="text-center my-5">ユーザー登録フォーム</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_username" class="form-label">名前</label>
+            {{ regist_form.username }}
+        </div>
+        <div class="mb-3">
+            <label for="id_age" class="form-label">年齢</label>
+            {{ regist_form.age }}
+        </div>
+        <div class="mb-3">
+            <label for="id_email" class="form-label">メールアドレス</label>
+            {{ regist_form.email }}
+        </div>
+        <div class="mb-3">
+            <label for="id_password" class="form-label">パスワード</label>
+            {{ regist_form.password }}
+        </div>
+        <div class="mb-3">
+            <label for="id_confirm_password" class="form-label">パスワード再入力</label>
+            {{ regist_form.confirm_password }}
+        </div>
+        <button type="submit" class="btn btn-primary">登録</button>
+    </form>
+</div>
+
 {% endblock content %}
