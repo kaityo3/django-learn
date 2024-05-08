@@ -1,0 +1,9 @@
+2024-05-08 02:06:48,220-422610-WARNING-warning.log
+2024-05-08 02:06:48,221-422610-ERROR-error.log
+2024-05-08 02:06:48,222-422610-CRITICAL-critical.log
+2024-05-08 02:06:48,223-422610-ERROR-user = Taro raised error
+2024-05-08 02:06:48,223-422610-ERROR-division by zero
+Traceback (most recent call last):
+  File "/home/tosh/python/logging/01_logging_sample.py", line 23, in <module>
+    c = a / b
+ZeroDivisionError: division by zero

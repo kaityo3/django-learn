@@ -1,0 +1,13 @@
+2024-05-08 02:17:57,660-__main__-ERROR-エラーログ
+2024-05-08 02:17:57,661-__main__-CRITICAL-クリティカルログ
+2024-05-08 02:19:28,183-__main__-ERROR-エラーログ
+2024-05-08 02:19:28,183-__main__-CRITICAL-クリティカルログ
+2024-05-08 02:20:17,218-__main__-ERROR-エラーログ
+2024-05-08 02:20:17,219-__main__-CRITICAL-クリティカルログ
+2024-05-08 02:20:33,914-__main__-ERROR-エラーログ
+2024-05-08 02:20:33,915-__main__-CRITICAL-クリティカルログ
+2024-05-08 02:20:33,915-__main__-ERROR-division by zero
+Traceback (most recent call last):
+  File "/home/tosh/python/logging/02_logging_sample.py", line 39, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
