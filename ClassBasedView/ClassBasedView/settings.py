@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     "store",
 ]
 
+# 上から順に実行され、下から順に返す
 MIDDLEWARE = [
+    # 最初にPerformanceの処理を実施して、最後にresponceが返った時間を測る
+    "ClassBasedView.middleware.PerformanceMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -54,7 +57,9 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-]
+    # フォルダ.ファイル.関数名
+    "ClassBasedView.middleware.MyMiddleware",
+    ]
 
 ROOT_URLCONF = "ClassBasedView.urls"
 
@@ -138,3 +143,74 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGGING = {
+    "version": 1,
+    # python標準のlogger
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(levelname)s [%(pathname)s:%(lineno)s] %(message)s',
+        }
+    },
+    "handlers":{
+        "console_handler":{
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "timed_file_handler":{
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": os.path.join("logs", "application.log"),
+            "when": "S",
+            "interval": 10,
+            "backupCount": 5,
+            "formatter": "simple",
+            "encoding": "utf-8",
+            # 書き込みとローテーションが重なるとエラーになってしまう事象を避ける効果あり
+            "delay": True,
+        },
+        "timed_error_handler":{
+            "level": "ERROR",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": os.path.join("logs", "application_error.log"),
+            "when": "S",
+            "interval": 10,
+            "backupCount": 5,
+            "formatter": "simple",
+            "encoding": "utf-8",
+            # 書き込みとローテーションが重なるとエラーになってしまう事象を避ける効果あり
+            "delay": True,
+        },
+        "timed_performance_handler":{
+            "level": "INFO",
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "filename": os.path.join("logs", "application_performance.log"),
+            "when": "S",
+            "interval": 10,
+            "backupCount": 5,
+            "formatter": "simple",
+            "encoding": "utf-8",
+            # 書き込みとローテーションが重なるとエラーになってしまう事象を避ける効果あり
+            "delay": True,
+        },
+    },
+    "loggers":{
+        "application-logger":{
+            "handlers": ["console_handler","timed_file_handler",],
+            "level":"DEBUG",
+            "propagate":False,
+        },
+        "error-logger":{
+            "handlers":["timed_error_handler",],
+            "level":"ERROR",
+            "propagate":False,
+        },
+        "performance-logger":{
+            "handlers":["timed_performance_handler",],
+            "level":"INFO",
+            "propagate":False,
+        }
+    }
+}

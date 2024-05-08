@@ -12,12 +12,16 @@ from django.views.generic.edit import (
 )
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
-
+from django.http import Http404
 
 from . import forms
 from .models import Books, Pictures
 from datetime import datetime
 from django.urls import reverse_lazy, reverse
+import logging
+
+application_logger = logging.getLogger("application-logger")
+error_logger = logging.getLogger("error-logger")
 
 class IndexView(View):
     # classed viewはgetとpostをオーバーライドする形で作成する
@@ -50,7 +54,12 @@ class HomeView(TemplateView):
     # contextを渡したい場合、get_context_dateメソッドを上書きする。
     def get_context_data(self, **kwargs) :
         context = super().get_context_data(**kwargs)
-        print(kwargs)
+        # print(kwargs)
+        application_logger.debug("Home画面を表示します")
+        if kwargs.get("name") == "あああ":
+            # error_logger.error("この名前は使用できません")
+            raise Http404("この名前は使用できません。")
+
         context["name"] = kwargs.get("name")
         context["time"] = datetime.now()
         return context

@@ -1,0 +1,5 @@
+2024-05-09 01:06:05,185 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/book_list/: 0.004150867462158203ms
+2024-05-09 01:06:06,410 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/detail_book/15: 0.011413335800170898ms
+2024-05-09 01:06:07,932 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/book_list/: 0.0016760826110839844ms
+2024-05-09 01:06:08,875 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/edit_book/15: 0.010735273361206055ms
+2024-05-09 01:06:13,298 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/edit_book/15: 0.009488821029663086ms

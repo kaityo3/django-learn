@@ -5,7 +5,7 @@
 <bode>
     <header>
         <nav>
-            <a class="navbar-brand" href="{% url "store:home" %}">ホーム</a>
+            <a class="navbar-brand" href="{% url "store:home" name="ゲスト" %}">ホーム</a>
             <a class="navbar-brand" href="{% url 'store:index' %}">本を登録</a>
             <a class="navbar-brand" href="{% url 'store:add_book' %}">本を登録(CreateVIew)</a>
             <a class="navbar-brand" href="{% url 'store:form_book' %}">本を登録(FormVIew)</a>

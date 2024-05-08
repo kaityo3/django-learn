@@ -1,0 +1,5 @@
+2024-05-09 01:05:30,132 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:14] /store/edit_book/16
+2024-05-09 01:05:30,983 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:14] /store/book_list/
+2024-05-09 01:05:31,512 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:14] /store/google/
+2024-05-09 01:05:33,911 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:14] /store/add_book/
+2024-05-09 01:05:34,739 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:14] /store/index/

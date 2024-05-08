@@ -1,0 +1,3 @@
+2024-05-09 01:05:30,143 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/edit_book/16: 0.011277437210083008ms
+2024-05-09 01:05:30,984 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/book_list/: 0.001556396484375ms
+2024-05-09 01:05:33,914 INFO [/home/tosh/python/ClassBasedView/ClassBasedView/middleware.py:31] /store/add_book/: 0.0032546520233154297ms
