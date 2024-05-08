@@ -1,0 +1,9 @@
+{% for msg in messages %}
+<!-- class部分に値を渡す。settingsから渡される -->
+<nav class="py-2 mb-0 {{ msg.tags }}">
+  <div class="container">
+    <!-- viewに書いた実際のテキストが入る -->
+    {{ msg }}
+  </div>
+</nav>
+{% endfor %}

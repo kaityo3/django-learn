@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+ 
+{% block main %}
+<div class="container">
+  <div class="row my-5">
+    <div class="col-12 col-lg-6">
+      <div class="bg-white border overflow-hidden">
+        <img src="/{{ object.image }}" width="100%">
+      </div>
+    </div>
+    <div class="col-12 col-lg-6">
+      <div class="border p-3 text-left text-dark overflow-hidden">
+        <h2 class="display-5">{{object.name}}</h2>
+        <p class="lead">
+          <!-- カテゴリを表示→クリックするとそのcategoriesページに渡る -->
+          <a href="/categories/{{object.category.slug}}/"
+            class="badge badge-pill badge-warning">{{object.category.name}}</a>
+          {% for tag in object.tags.all %}
+          <!-- tagを表示→クリックするとそのtagページに渡る -->
+          <a href="/tags/{{tag.slug}}/" class="badge badge-pill badge-light">#{{tag}}</a>
+          {% endfor %}
+        </p>
+        <p class="lead">残り{{object.stock}}個
+        </p>
+        <p class="lead">¥{{object.price}}（税別）</p>
+        <p class="lead">{{object.description}}</p>
+        
+        <!-- カートに追加するためのフォーム-->
+        <!-- inputタグがついている情報について、postメソッドで送信する。post.get("nameの値")で取り出すことができる -->
+        <form action="/cart/add/" method="POST" class="">
+          {% csrf_token %}
+          <!-- item情報をinputに指定(上で既にアイテム名を表示しているためtype = hidden) -->
+          <input type="hidden" name="item_pk" value="{{object.pk}}">
+          <p>
+            <!-- 数量をinputするフォーム -->
+            <input type="number" class="form-control d-inline w-25" name="quantity" value="1" max="{{object.stock}}"> 点
+          </p>
+          <p>
+            <!-- 在庫量についても考慮 -->
+            {% if object.stock == 0 %}
+            <button type="submit" class="btn btn-warning" disabled>売り切れ</button>
+            {% else %}
+            <button type="submit" class="btn btn-success">カートに追加</button>
+            {% endif %}
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  <h2>おすすめ</h2>
+  <div class = "row mb-5">
+    <!-- context~で定義したaddtional_itemを呼び出す -->
+    <!-- わざわざviewを用いずともhtmlの記述でitemを呼び出すことが出来る(context~.でどの情報を出力するかの定義は必要) -->
+    {% for object in ADDTIONAL_ITEMS %}
+    <div class = "col-12 col-lg-3 my-3">
+      {% include 'snippets/item_add_box.html' %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

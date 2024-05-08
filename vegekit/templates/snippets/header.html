@@ -1,0 +1,30 @@
+<div class="py-1 bg-dark ">
+  <nav class="container d-flex flex-column flex-md-row justify-content-between">
+    <!-- contextで設定 -->
+    <a class="py-2 text-white" href="/">{{ TITLE }}</a>
+    <a class="py-2 d-none d-md-inline-block text-white" href="/orders/">Orders</a>
+    <a class="py-2 d-none d-md-inline-block text-white" href="/profile/">Profile</a>
+    <a class="py-2 d-none d-md-inline-block text-white" href="/account/">Account</a>
+    
+    <!-- cartに今何点入っているかのバッチ追加 -->
+    <a class="py-2 d-none d-md-inline-block text-white" href="/cart/">
+      Cart
+      <!-- cartがあってかつカートの中身が0じゃないなら(requestはsettingsでcontextとしてどこでも参照可能になっている) -->
+      {% if request.session.cart and request.session.cart.items|length != 0 %}
+      <!-- Cartの後ろにバッチをつけて、バッチの内容がitem数のlengs(数)になっている -->
+      <span class="badge badge-danger">{{request.session.cart.items|length}}</span>
+      {% endif %}
+
+    </a>
+    <!-- ユーザーがログインしているなら -->
+    {% if user.is_authenticated %}
+    <!-- ログアウトページが必要 -->
+    <a class="py-2 d-none d-md-inline-block text-white" href="/logout/">Logout</a>
+    <!-- ログインしていない -->
+    {% else %}
+    <!-- ログインページやサインアップページを作成する -->
+    <a class="py-2 d-none d-md-inline-block text-white" href="/login/">Login</a>
+    <a class="py-2 d-none d-md-inline-block text-white" href="/signup/">SignUp</a>
+    {% endif %}
+  </nav>
+</div>

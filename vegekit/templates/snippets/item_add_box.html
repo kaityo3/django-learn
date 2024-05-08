@@ -1,0 +1,34 @@
+<!-- cartページから読み込む -->
+<div class="border">
+    <img src="/{{object.image}}" width="100%" class=" bg-white">
+    <div class="bg-light text-center text-secondary overflow-hidden">
+      <div class="my-2 py-2">
+          <!-- objectが渡ってくるので、それを見やすく表示している -->
+        <h2 class="lead">{{object.name}} - ¥{{object.price}}</h2>
+
+        <!-- カートに追加するためのフォーム-->
+        <!-- inputタグがついている情報について、postメソッドで送信し、
+            post.get("nameの値")で取り出すことができる -->
+        <!-- action="/cart/add/"のurlにデータが送信されるため
+            urls.pyに従って、addcartメソッドのpost関数がデータを受けっとって処理される -->
+        <form action="/cart/add/" method="POST" class="p-2">
+          {% csrf_token %}
+          <!-- 表示している商品名をinput -->
+          <input type="hidden" name="item_pk" value="{{object.pk}}">
+          <div class="form-row align-items-center ">
+            <div class="col-md-7">
+            <!-- formに入力した購入量もinput -->
+              <input type="number" class="form-control form-control-sm" name="quantity" value="1">
+            </div>
+            <div class="col-md-5">
+              {% if object.stock == 0 %}
+              <button type="submit" class="btn btn-sm btn-outline-warning" disabled>売り切れ</button>
+              {% else %}
+              <button type="submit" class="btn btn-sm btn-outline-success">Add to cart</button>
+              {% endif %}
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,35 @@
+<!-- トップページの商品表示用html -->
+<!--base.htmlをもとにする -->
+{% extends 'base.html' %}
+<!-- block mainからend blockの中身のみを修正して表示するようにする -->
+{% block main %}
+
+<!-- headline.htmlを挿入する -->
+{% include 'snippets/headline.html' %}
+ 
+<div class="container px-5" style="max-width:100%">
+  <div class="row my-5">
+    <!-- 人気アイテムを表示 -->
+    {% for object in POPULAR_ITEMS %}
+    <!-- loopが4以下なら -->
+    {% if forloop.counter < 4 %} <div class="col-12 col-lg-4 my-3">
+      <!-- ボタン形式で何番人気か表示する(販売数の降順でデータを取っているため、上から1,2,3番人気が分かる) -->
+      <button type="button" class="btn btn-danger rounded-0">{{ forloop.counter }}番人気</button>
+      {% include 'snippets/item_box.html' %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="row my-5">    
+    <!-- iten_box.htmlではobjectという変数を扱っているため事前にonjectとして変数をとる -->
+    {% for object in object_list %}
+    <div class="col-12 col-lg-3 my-3">
+        <!-- itembox.htmlを挿入する -->
+        <!-- for文の中にあるため、それぞれのitem一つ一つに対してスニペット化して扱える -->
+      {% include 'snippets/item_box.html' %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
