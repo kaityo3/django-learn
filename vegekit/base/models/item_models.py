@@ -6,7 +6,7 @@ from django.utils.crypto import get_random_string
 import os
 from joblib import MemorizedResult
 
-from pytest import Instance
+# from pytest import Instance
 
 def create_id():
     return get_random_string(22)
