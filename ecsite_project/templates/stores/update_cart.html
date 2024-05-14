@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- classViewでmodelを指定しているclassはobjectでmodelを取得可能 -->
+<p>{{ object.product.name }}:在庫数{{ object.product.stock }}個</p>
+<form method="POST">
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="更新">
+</form>
+{% endblock content %}

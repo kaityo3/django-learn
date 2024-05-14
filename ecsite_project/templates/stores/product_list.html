@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="col-10 offset-1 my-4"> 
+    <h1>商品一覧</h1>
+    <!-- formの情報の送信先をactionでurl指定している -->
+    <form method ="get" action="{% url "stores:product_list" %}">
+		    <!-- bootstrapのformには入力項目のグループに .form-group を、入力部品に .form-control を指定する -->
+        <div class="row">
+		        <!-- label for&input idで紐づけを行うと、都合がいいことが多い -->
+            <div class="col input-group">
+                <label class="input-group-text" for="product_type_name">商品タイプ</label>
+                <!-- valueを指定することで、検索した文字を検索窓に表示されたままにする -->
+                <input type="search" id="product_type_name" name="product_type_name" value="{{ product_type_name }}" class="form-control">
+            </div>
+            <div class="col input-group">
+                <label class="input-group-text" for="product_name">商品名</label>
+                <input type="search" id="product_name" name="product_name" value="{{ product_name }}" class="form-control">
+            </div>
+            <div class="col input-group">
+                <label class="input-group-text" for="inputGroupSelect01">値段で並び替え</label>
+                <select name="order_by_price" class="form-select" id="inputGroupSelect01">
+                    <option value="" {% if order_by_price == "" %}selected{% endif %}>選択してね</option>
+                    <option value="1" {% if order_by_price == "1" %}selected{% endif %}>昇順</option>
+                    <option value="2" {% if order_by_price == "2" %}selected{% endif %}>降順</option>
+                </select>
+            </div>
+            <div class="col-1">
+                <input type="submit" value="検索する" class="btn btn-primary">
+            </div>
+        
+        </div>
+        
+    </form>
+<table class="table table-striped table-bordered table-hover mt-2"> 
+    <thead>
+        <tr>
+            <!-- th:テーブルのラベル -->
+            <th>商品の種類</th>
+            <th>商品名</th>
+            <th>価格</th>
+            <th>在庫数</th>
+            <th>生産者</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for object in object_list %}
+        <tr>
+            <!-- td:テーブルの中身 -->
+            <td>{{ object.product_type.name }}</td>
+            <td><a href="{% url "stores:product" pk=object.id %}">{{ object.name }}</a></td>
+            <td>{{ object.price }}</td>
+            <td>{{ object.stock }}</td>
+            <td>{{ object.manufacturer }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
